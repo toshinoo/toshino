@@ -4,7 +4,7 @@
 // @match       *://boards.4channel.org/*/*
 // @match       *://boards.4chan.org/*/*
 // @grant       none
-// @version     0.13
+// @version     0.14
 // @author      toshino developer
 // @homepageURL https://github.com/toshinoo/toshino
 // @downloadURL https://github.com/toshinoo/toshino/raw/main/toshino.user.js
