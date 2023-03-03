@@ -8,8 +8,10 @@ const metadata =
 // @match       *://boards.4chan.org/*/*
 // @grant       none
 // @version     ${version}
-// @author      - https://github.com/toshinoo/toshino
-// @description  4chan quality of life tweaks
+// @author      toshino developer
+// @homepageURL https://github.com/toshinoo/toshino
+// @downloadURL https://github.com/toshinoo/toshino/raw/main/toshino.user.js
+// @description 4chan quality of life tweaks
 // ==/UserScript==
 
 `

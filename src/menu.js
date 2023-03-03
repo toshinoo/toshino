@@ -84,9 +84,7 @@ function menu() {
                 color: #c5c8c6
             } 
                 
-                toshino-menu.visible {display: flex; opacity: 1; pointer-events: auto!important}
-            
-
+            toshino-menu.visible {display: flex; opacity: 1; pointer-events: auto!important}
 
             toshino-options {
                 overflow: hidden;
@@ -99,19 +97,6 @@ function menu() {
             toshino-menu.visible toshino-options {
                 transform: scale(1);
             }
-
-   
-
-            /*
-            toshino-options-body::after {
-                width:2px;
-                height: 100%;
-                content: "";
-                position:absolute;
-                bottom:0;
-                left:0;
-                background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(220,20,60,1) 50%, rgba(220,20,60,1) 100%);
-            }*/
 
             toshino-options-body {
                 position: relative;
