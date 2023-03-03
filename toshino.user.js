@@ -4,7 +4,7 @@
 // @match       *://boards.4channel.org/*/*
 // @match       *://boards.4chan.org/*/*
 // @grant       none
-// @version     0.1
+// @version     0.10
 // @author      - https://github.com/toshinoo/toshino
 // @description  4chan quality of life tweaks
 // ==/UserScript==
@@ -176,7 +176,7 @@ function menu() {
 
         }
 
-        
+    
         // if none is set, set to disabled on initial script install
         if (!localStorage[name]) {
             localStorage[name] = 'disabled';
@@ -317,7 +317,6 @@ function menu() {
             
             `
         ].join("\n");
-
 
         addOption('links', 'Strip 4chan links from tracking', removeDeferers);
         addOption('pageList', 'Move pagination to the top of the page', movePageList);
