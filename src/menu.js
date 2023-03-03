@@ -22,21 +22,18 @@ function menu() {
         // create checkbox for the menu
             qs('toshino-options-body').insertAdjacentHTML('beforeend', 
             `<label for="toshino-${name}">
-                ${description} <span class="toshino-wip"> WIP </span>
                 <input id="toshino-${name}" data-toshino-${name} type="checkbox"></input>
+                ${description} <span class="toshino-wip"> WIP </span>
             </label>`)
-
         } else {
         // create checkbox for the menu
             qs('toshino-options-body').insertAdjacentHTML('beforeend', 
             `<label for="toshino-${name}">
-                ${description}
                 <input id="toshino-${name}" data-toshino-${name} type="checkbox"></input>
+                ${description}
             </label>`)
-
         }
 
-    
         // if none is set, set to disabled on initial script install
         if (!localStorage[name]) {
             localStorage[name] = 'disabled'
@@ -158,7 +155,6 @@ function menu() {
                 cursor: pointer;
                 border: 0;
                 background: #2f2f2f;
-                border-radius: 4px;
                 padding: .4rem;
                 color: black;
                 color: white;
@@ -173,6 +169,13 @@ function menu() {
                 position: fixed;
                 right: 0;
                 top: 50%;
+            }
+
+            @media only screen and (max-width: 500px) {
+                .toshino-floating-buttons {
+                    top: unset !important;
+                    bottom: 15%;
+                }
             }
             
             `
