@@ -4,7 +4,7 @@
 // @match       *://boards.4channel.org/*/*
 // @match       *://boards.4chan.org/*/*
 // @grant       none
-// @version     0.9
+// @version     0.1
 // @author      - https://github.com/toshinoo/toshino
 // @description  4chan quality of life tweaks
 // ==/UserScript==
@@ -22,7 +22,6 @@ function qs(selector, all) {
 
 const navBar = qs('#boardNavDesktop');
 const pageList = qs('.pagelist.desktop');
-qs('.board');
 const links = qs('a[target]', 'all');
 const pageJump = qs('.pageJump');
 
@@ -134,6 +133,19 @@ function floatingJumpButton() {
             </a>
         </div>
     `);
+}
+
+function improvedImageHover() {
+    document.querySelector('style').innerHTML += [
+        `
+        #image-hover {
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+    `
+    ].join("\n");
 }
 
 function menu() {
@@ -312,6 +324,7 @@ function menu() {
         addOption('namefags', 'Hide namefags\' posts', hideNamefags);
         addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread);
         addOption('floatingButton', 'Add a scroll to top/bottom button !wip', floatingJumpButton);
+        addOption('improvedHover', 'Center hovered images !wip', improvedImageHover);
 
         qs('toshino-options-body').insertAdjacentHTML('beforeend', `<button class="closeToshino" type="button"> Close </button>`);
         qs('toshino-options-body').insertAdjacentHTML('beforeend', `<button onclick="location.reload()" disabled class="applyToshino" type="button"> Apply </button>`);

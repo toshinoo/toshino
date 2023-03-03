@@ -5,6 +5,7 @@ import { movePageList } from "./functions/movePageList";
 import { hideNamefags } from "./functions/hideNamefags";
 import { detectSamefaggedThread } from "./functions/detectSamefaggedThread";
 import { floatingJumpButton } from "./functions/floatingJumpButton";
+import { improvedImageHover } from "./functions/improvedImageHover";
 
 
 function menu() {
@@ -35,7 +36,7 @@ function menu() {
 
         }
 
-        
+    
         // if none is set, set to disabled on initial script install
         if (!localStorage[name]) {
             localStorage[name] = 'disabled'
@@ -177,12 +178,12 @@ function menu() {
             `
         ].join("\n");
 
-
         addOption('links', 'Strip 4chan links from tracking', removeDeferers)
         addOption('pageList', 'Move pagination to the top of the page', movePageList)
         addOption('namefags', 'Hide namefags\' posts', hideNamefags)
         addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread)
         addOption('floatingButton', 'Add a scroll to top/bottom button !wip', floatingJumpButton)
+        addOption('improvedHover', 'Center hovered images !wip', improvedImageHover)
 
         qs('toshino-options-body').insertAdjacentHTML('beforeend', `<button class="closeToshino" type="button"> Close </button>`)
         qs('toshino-options-body').insertAdjacentHTML('beforeend', `<button onclick="location.reload()" disabled class="applyToshino" type="button"> Apply </button>`)
