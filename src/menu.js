@@ -86,11 +86,21 @@ function menu() {
                 
                 toshino-menu.visible {display: flex; opacity: 1; pointer-events: auto!important}
             
+
+
             toshino-options {
                 overflow: hidden;
                 border-radius: 3px;
                 background: #111;
+                transform: scale(.7);
+                transition: transform .3s
             }
+
+            toshino-menu.visible toshino-options {
+                transform: scale(1);
+            }
+
+   
 
             /*
             toshino-options-body::after {
