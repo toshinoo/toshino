@@ -1,0 +1,2 @@
+- detect samefagged threads
+- up & down button
