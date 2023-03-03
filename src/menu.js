@@ -4,6 +4,7 @@ import { removeDeferers } from "./functions/removeDeferers"
 import { movePageList } from "./functions/movePageList";
 import { hideNamefags } from "./functions/hideNamefags";
 import { detectSamefaggedThread } from "./functions/detectSamefaggedThread";
+import { floatingJumpButton } from "./functions/floatingJumpButton";
 
 
 function menu() {
@@ -65,7 +66,6 @@ function menu() {
     function createMenu() {
         pageJump.insertAdjacentHTML('beforeend', `<a href="#!" class="toshino"> Toshino </a>`)
 
-
         document.body.insertAdjacentHTML('beforeend', `<toshino-menu></toshino-menu>`)
         qs('toshino-menu').insertAdjacentHTML('beforeend', `<toshino-options> <div> <img alt="Toshino Kyoko!" src="${toshinoImg}"/> </div> 
         
@@ -73,6 +73,9 @@ function menu() {
             <h1> Toshino </h1>
             </toshino-options-body>
         </toshino-options>`)
+
+        // fix for pages that don't have the style tag present
+        document.body.insertAdjacentHTML('afterbegin', '<style></style>')
 
         document.querySelector('style').innerHTML += [
             `toshino-menu {
@@ -148,6 +151,28 @@ function menu() {
                 cursor: auto;
                 opacity: .4;
             }
+
+            .toshino-floating-button {
+                width: 100%;
+                cursor: pointer;
+                border: 0;
+                background: #2f2f2f;
+                border-radius: 4px;
+                padding: .4rem;
+                color: black;
+                color: white;
+                font-weight: 600;
+                font-family: inherit;
+            }
+
+            .toshino-floating-buttons {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                position: fixed;
+                right: 0;
+                top: 50%;
+            }
             
             `
         ].join("\n");
@@ -157,6 +182,7 @@ function menu() {
         addOption('pageList', 'Move pagination to the top of the page', movePageList)
         addOption('namefags', 'Hide namefags\' posts', hideNamefags)
         addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread)
+        addOption('floatingButton', 'Add a scroll to top/bottom button !wip', floatingJumpButton)
 
         qs('toshino-options-body').insertAdjacentHTML('beforeend', `<button class="closeToshino" type="button"> Close </button>`)
         qs('toshino-options-body').insertAdjacentHTML('beforeend', `<button onclick="location.reload()" disabled class="applyToshino" type="button"> Apply </button>`)
