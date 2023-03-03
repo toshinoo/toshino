@@ -100,7 +100,6 @@ function menu() {
 
             toshino-options-body {
                 position: relative;
-
                 box-sizing: border-box; max-width: 300px;  display:flex; flex-wrap: wrap;
                 padding: 1rem;
             }

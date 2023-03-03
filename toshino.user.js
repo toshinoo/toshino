@@ -146,6 +146,7 @@ function improvedImageHover() {
             left: 50%;
             margin-right: -50%;
             transform: translate(-50%, -50%);
+            pointer-events: none;
         }
     `
     ].join("\n");
@@ -243,7 +244,6 @@ function menu() {
 
             toshino-options-body {
                 position: relative;
-
                 box-sizing: border-box; max-width: 300px;  display:flex; flex-wrap: wrap;
                 padding: 1rem;
             }
