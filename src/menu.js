@@ -6,6 +6,7 @@ import { hideNamefags } from "./functions/hideNamefags";
 import { detectSamefaggedThread } from "./functions/detectSamefaggedThread";
 import { floatingJumpButton } from "./functions/floatingJumpButton";
 import { improvedImageHover } from "./functions/improvedImageHover";
+import { moveBacklinksDown } from "./functions/moveBacklinksDown";
 
 
 function menu() {
@@ -195,6 +196,7 @@ function menu() {
         addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread)
         addOption('floatingButton', 'Add a scroll to top/bottom button', floatingJumpButton)
         addOption('improvedHover', 'Center hovered images', improvedImageHover)
+        addOption('moveBacklinksDown', 'Move backlinks below replies', moveBacklinksDown)
 
         qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button class="closeToshino" type="button"> Close </button>`)
         qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button onclick="location.reload()" disabled class="applyToshino" type="button"> Apply </button>`)

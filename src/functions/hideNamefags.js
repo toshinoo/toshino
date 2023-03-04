@@ -1,4 +1,6 @@
 import { qs } from "../utils"
+import { replies } from "../variables"
+
 
 function hideNamefags() {
 
@@ -22,7 +24,6 @@ function hideNamefags() {
           observer.observe(thread, config);
       });
 
-    const replies = qs("div.post.reply[id]", "all")
     lookForANamefag(replies)
 
 }
