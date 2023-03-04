@@ -4,9 +4,11 @@
 Toshino is a userscript designed to co-exist with the native extension
 
 ## Install
-You need a userscript manager to install toshino permanently, the recommended one is [Violentmonkey](https://violentmonkey.github.io/)
+You need a userscript manager to install toshino permanently, the recommended one is [Violentmonkey](https://violentmonkey.github.io/).
 
-Then you can just open [https://raw.githubusercontent.com/toshinoo/toshino/main/toshino.user.js](toshino.user.js) in your browser and confirm the installation
+Then you can just open [https://raw.githubusercontent.com/toshinoo/toshino/main/toshino.user.js](toshino.user.js) in your browser and confirm the installation.
+
+Toshino's menu will appear next to the 4chan's native settings menu on the navbar, below boards.
 
 That's it!
 
