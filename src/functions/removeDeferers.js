@@ -1,7 +1,6 @@
 import {links} from "../variables";
 
 function removeDeferers() {
-  console.log('removingdeferers');
     links.forEach((link) => {
         if (link.href.startsWith('https://sys.4channel.org/derefer?')) {
           link.removeAttribute('target')

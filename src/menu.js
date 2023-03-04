@@ -67,9 +67,15 @@ function menu() {
         document.body.insertAdjacentHTML('beforeend', `<toshino-menu></toshino-menu>`)
         qs('toshino-menu').insertAdjacentHTML('beforeend', `<toshino-options> <div> <img alt="Toshino Kyoko!" src="${toshinoImg}"/> </div> 
         
-        <toshino-options-body>
-            <h1> Toshino </h1>
+            <toshino-options-body>
+                <h1> Toshino </h1>
             </toshino-options-body>
+            <toshino-options-footer>
+                <toshino-options-footer-buttons>
+                </toshino-options-footer-buttons>
+                <toshino-options-footer-links>
+                </toshino-options-footer-links>
+            </toshino-options-footer>
         </toshino-options>`)
 
         // fix for pages that don't have the style tag present
@@ -102,6 +108,14 @@ function menu() {
                 position: relative;
                 box-sizing: border-box; max-width: 300px;  display:flex; flex-wrap: wrap;
                 padding: 1rem;
+                padding-bottom: 0;
+            }
+
+            toshino-options-footer {
+                justify-content: space-between;
+                position: relative;
+                box-sizing: border-box; max-width: 300px;  display:flex; flex-wrap: wrap; align-items: center;
+                padding: 1rem;
             }
 
             toshino-options-body h1 {
@@ -129,7 +143,6 @@ function menu() {
                 color: white;
                 font-weight: 600;
                 font-family: inherit;
-                margin-top: 1rem;
                 margin-right: .25rem;
                 box-shadow: 0px 0px 0px 0 transparent;
                 transition: box-shadow 0.15s;
@@ -138,6 +151,7 @@ function menu() {
             toshino-menu button:focus {
                 box-shadow: 0px 0px 0px 2px #aaa;
             }
+
 
             toshino-menu button[disabled] {
                 cursor: auto;
@@ -168,7 +182,7 @@ function menu() {
             @media only screen and (max-width: 500px) {
                 .toshino-floating-buttons {
                     top: unset !important;
-                    bottom: 15%;
+                    bottom: 23%;
                 }
             }
             
@@ -179,11 +193,19 @@ function menu() {
         addOption('pageList', 'Move pagination to the top of the page', movePageList)
         addOption('namefags', 'Hide namefags\' posts', hideNamefags)
         addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread)
-        addOption('floatingButton', 'Add a scroll to top/bottom button !wip', floatingJumpButton)
-        addOption('improvedHover', 'Center hovered images !wip', improvedImageHover)
+        addOption('floatingButton', 'Add a scroll to top/bottom button', floatingJumpButton)
+        addOption('improvedHover', 'Center hovered images', improvedImageHover)
 
-        qs('toshino-options-body').insertAdjacentHTML('beforeend', `<button class="closeToshino" type="button"> Close </button>`)
-        qs('toshino-options-body').insertAdjacentHTML('beforeend', `<button onclick="location.reload()" disabled class="applyToshino" type="button"> Apply </button>`)
+        qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button class="closeToshino" type="button"> Close </button>`)
+        qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button onclick="location.reload()" disabled class="applyToshino" type="button"> Apply </button>`)
+
+        qs('toshino-options-footer-links').insertAdjacentHTML('beforeend',
+        `
+            <a href="https://github.com/toshinoo/toshino" target="_blank"> Code </a> <span> / </span>
+            <a href="https://github.com/toshinoo/toshino/issues" target="_blank"> Issues </a> <span> / </span>
+             <a href="https://github.com/toshinoo/toshino/discussions" target="_blank"> Talk </a> 
+        `)
+
 
         const toshinoMenu = qs('toshino-menu')
 

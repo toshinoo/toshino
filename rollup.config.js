@@ -1,4 +1,4 @@
-const version = "0.14"
+const version = "0.15"
 
 const metadata = 
 `// ==UserScript==

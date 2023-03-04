@@ -1,7 +1,7 @@
 import { qs } from "../utils";
 
 function detectSamefaggedThread() {
-    if (qs('.thread-stats')) {
+    if (qs('.thread-stats') && qs('.ts-ips')) {
         const replies = qs('.ts-replies').innerHTML
         const posters = qs('.ts-ips').innerHTML
 
