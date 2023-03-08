@@ -1,5 +1,7 @@
+import { style } from "../variables"
+
 function improvedImageHover() {
-    document.querySelector('style').innerHTML += [
+    style.innerHTML += [
         `
         #image-hover {
             top: 50%;

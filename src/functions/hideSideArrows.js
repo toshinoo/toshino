@@ -1,5 +1,8 @@
+import { style } from "../variables"
+
+
 function hideSideArrows() {
-    document.querySelector('style').innerHTML += [
+    style.innerHTML += [
         `
             div.post div.file .fileThumb {
                 margin-left: 0;

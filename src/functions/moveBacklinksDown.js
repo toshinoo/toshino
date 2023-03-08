@@ -1,5 +1,7 @@
+import { style } from "../variables"
+
 function moveBacklinksDown() {
-    document.querySelector('style').innerHTML += [
+    style.innerHTML += [
         `
         .backlink {
             position:absolute;
