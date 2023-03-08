@@ -1,11 +1,7 @@
-import { qs } from "../utils"
-import { replies } from "../variables"
+import { replies, threads } from "../variables"
 
 
 function hideNamefags() {
-
-    const threads = qs("div.thread[id]", "all")
-
 
       threads.forEach(thread => {
         const config = { attributes: false, childList: true, subtree: false };

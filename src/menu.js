@@ -7,6 +7,7 @@ import { detectSamefaggedThread } from "./functions/detectSamefaggedThread";
 import { floatingJumpButton } from "./functions/floatingJumpButton";
 import { improvedImageHover } from "./functions/improvedImageHover";
 import { moveBacklinksDown } from "./functions/moveBacklinksDown";
+import { fileFunctions } from "./functions/fileFunctions";
 
 
 function menu() {
@@ -193,10 +194,12 @@ function menu() {
         addOption('links', 'Strip 4chan links from tracking', removeDeferers)
         addOption('pageList', 'Move pagination to the top of the page', movePageList)
         addOption('namefags', 'Hide namefags\' posts', hideNamefags)
-        addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread)
         addOption('floatingButton', 'Add a scroll to top/bottom button', floatingJumpButton)
         addOption('improvedHover', 'Center hovered images', improvedImageHover)
-        addOption('moveBacklinksDown', 'Move backlinks below replies', moveBacklinksDown)
+        addOption('moveBacklinksDown', 'Move backlinks below replies !wip', moveBacklinksDown)
+        addOption('fileFunctions', 'Additional file functions !wip', fileFunctions)
+        addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread)
+
 
         qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button class="closeToshino" type="button"> Close </button>`)
         qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button onclick="location.reload()" disabled class="applyToshino" type="button"> Apply </button>`)

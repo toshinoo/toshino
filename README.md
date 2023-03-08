@@ -15,7 +15,7 @@ That's it!
 ### One-time use
 If you don't have a userscript manager and you just want to try out the script, open [toshino.user.js](https://raw.githubusercontent.com/toshinoo/toshino/main/toshino.user.js) in your browser, copy all contents, and paste the script to your browser's console (on 4chan). This way the script will be active until you reload the page. A convenient way to see if you like it.
 
-## Common problems
+## Common problems / questions
 
 ### "I don't see the settings menu!"
 
@@ -24,3 +24,7 @@ You need to enable `persistent drop-down navigation bar` in `Navigation`
 ### "Strip 4chan links from tracking doesn't do anything!"
 
 Enable `Linkify URLs` in `Miscellaneous`
+
+### What does WIP mean?
+
+Work in progress. Features labeled as WIP may have occasional bugs or may be not implemented entirely, but should work fine for the majority of time
