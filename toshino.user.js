@@ -195,9 +195,11 @@ function createButtons() {
 }
 
 function attachListeners() {
-    qs('.toshino-EX').addEventListener("click", (e) => {
-        e.preventDefault();
-        expandAllImages(e.target.dataset.threadid);
+    qs('.toshino-EX', "all").forEach(expander => {
+        expander.addEventListener("click", (e) => {
+            e.preventDefault();
+            expandAllImages(e.target.dataset.threadid);
+        });
     });
 }
 
@@ -205,10 +207,14 @@ function expandAllImages(threadid) {
     const thread = qs(`#${threadid}`);
     const files = thread.querySelectorAll(".file");
     files.forEach(file => {
+        console.log(file);
         // native 4chan image expansion
         ImageExpansion.expand(file.querySelector('.fileThumb').firstChild);
 
- //     file.querySelector('.fileThumb').firstChild.click()
+        // use this if the native option breaks for some reason
+   //     if (!file.classList.contains("image-expanded")) {
+    //        file.querySelector('.fileThumb').firstChild.click()
+  //      }
     });
 }
 
