@@ -1,5 +1,5 @@
 import { qs } from "../utils"
-import { threads } from "../variables"
+import { threads, replies } from "../variables"
 
 function fileFunctions() {
     createButtons()
@@ -15,7 +15,19 @@ function createButtons() {
                 <a data-threadid="${thread.id}" class="toshino-EX" title="Expand all images in this thread" href="#"> EX </a>
             <span> ] </span>
         `)
-    });
+    })
+
+    /*
+    replies.forEach(reply => {
+        const fileText = reply.querySelector(".fileText")
+        if (fileText) {
+            fileText.insertAdjacentHTML('beforeend', `
+            <span> [ </span> 
+                <a title="Download file" class="toshino-DL" href="#"> DL </a>
+            <span> ] </span>
+        `)
+        }
+    })*/
 }
 
 function attachListeners() {

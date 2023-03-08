@@ -192,6 +192,18 @@ function createButtons() {
             <span> ] </span>
         `);
     });
+
+    /*
+    replies.forEach(reply => {
+        const fileText = reply.querySelector(".fileText")
+        if (fileText) {
+            fileText.insertAdjacentHTML('beforeend', `
+            <span> [ </span> 
+                <a title="Download file" class="toshino-DL" href="#"> DL </a>
+            <span> ] </span>
+        `)
+        }
+    })*/
 }
 
 function attachListeners() {
