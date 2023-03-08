@@ -45,12 +45,12 @@ function expandAllImages(threadid) {
     files.forEach(file => {
         console.log(file);
         // native 4chan image expansion
-        ImageExpansion.expand(file.querySelector('.fileThumb').firstChild)
+    //    ImageExpansion.expand(file.querySelector('.fileThumb').firstChild)
 
-        // use this if the native option breaks for some reason
-   //     if (!file.classList.contains("image-expanded")) {
-    //        file.querySelector('.fileThumb').firstChild.click()
-  //      }
+//use this if the native option breaks for some reason
+       if (!file.classList.contains("image-expanded")) {
+            file.querySelector('.fileThumb').firstChild.click()
+       }
     });
 }
 

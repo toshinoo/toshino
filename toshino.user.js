@@ -4,7 +4,7 @@
 // @match       *://boards.4channel.org/*/*
 // @match       *://boards.4chan.org/*/*
 // @grant       none
-// @version     0.17
+// @version     0.20
 // @author      toshino developer
 // @homepageURL https://github.com/toshinoo/toshino
 // @downloadURL https://github.com/toshinoo/toshino/raw/main/toshino.user.js
@@ -221,35 +221,67 @@ function expandAllImages(threadid) {
     files.forEach(file => {
         console.log(file);
         // native 4chan image expansion
-        ImageExpansion.expand(file.querySelector('.fileThumb').firstChild);
+    //    ImageExpansion.expand(file.querySelector('.fileThumb').firstChild)
 
-        // use this if the native option breaks for some reason
-   //     if (!file.classList.contains("image-expanded")) {
-    //        file.querySelector('.fileThumb').firstChild.click()
-  //      }
+//use this if the native option breaks for some reason
+       if (!file.classList.contains("image-expanded")) {
+            file.querySelector('.fileThumb').firstChild.click();
+       }
     });
+}
+
+function hideSideArrows() {
+    document.querySelector('style').innerHTML += [
+        `
+            div.post div.file .fileThumb {
+                margin-left: 0;
+            }
+            .sideArrows {
+                display: none;   
+            }
+        `
+    ].join("\n");
 }
 
 function menu() {
 
     createMenu();
 
-    function addOption(name, description, callback) {
+    function addOption(name, description, callback, category) {
 
-        qs('toshino-menu');
+     //   const toshinoMenu = qs('toshino-menu')
+
+        let injectTo = qs('toshino-options-body');
+        let injectWhere = 'beforeend';
+
+        if (category) {
+            const header = qs(`h2[data-categoryName='${category}']`);
+            if (!header) {
+                qs('toshino-options-body').insertAdjacentHTML('beforeend', `
+                <h2 data-categoryName="${category}">
+                    ${category}
+                </h2>
+            `);
+            
+            } else {
+                injectTo = header;
+                injectWhere = "afterend"; // not a ternary operator because it makes more sense like this
+            }
+
+        }
 
         if (description.endsWith("!wip")) {
             description = description.replace("!wip", '');
 
         // create checkbox for the menu
-            qs('toshino-options-body').insertAdjacentHTML('beforeend', 
+        injectTo.insertAdjacentHTML(injectWhere, 
             `<label for="toshino-${name}">
                 <input id="toshino-${name}" data-toshino-${name} type="checkbox"></input>
                 ${description} <span class="toshino-wip"> WIP </span>
             </label>`);
         } else {
         // create checkbox for the menu
-            qs('toshino-options-body').insertAdjacentHTML('beforeend', 
+        injectTo.insertAdjacentHTML(injectWhere, 
             `<label for="toshino-${name}">
                 <input id="toshino-${name}" data-toshino-${name} type="checkbox"></input>
                 ${description}
@@ -341,7 +373,20 @@ function menu() {
             }
 
             toshino-options-body h1 {
-                margin-top:0;
+                width: 100%;
+                margin: 0;
+            }
+
+            toshino-options-body h2 {
+                text-transform: capitalize;
+                font-weight: normal;
+                font-size: 1rem;
+                color: #acacac;
+                margin: 0;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                margin-top: .8rem;
+                margin-bottom: .35rem;
             }
 
             toshino-options label, toshino-options div {
@@ -411,14 +456,15 @@ function menu() {
             `
         ].join("\n");
 
-        addOption('links', 'Strip 4chan links from tracking', removeDeferers);
-        addOption('pageList', 'Move pagination to the top of the page', movePageList);
-        addOption('namefags', 'Hide namefags\' posts', hideNamefags);
-        addOption('floatingButton', 'Add a scroll to top/bottom button', floatingJumpButton);
-        addOption('improvedHover', 'Center hovered images', improvedImageHover);
-        addOption('moveBacklinksDown', 'Move backlinks below replies !wip', moveBacklinksDown);
-        addOption('fileFunctions', 'Additional file functions !wip', fileFunctions);
-        addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread);
+        addOption('pageList', 'Move pagination to the top of the page', movePageList, 'functional');
+        addOption('hideSideArrows', 'Hide side arrows', hideSideArrows, 'cosmetic');
+        addOption('moveBacklinksDown', 'Move backlinks below replies !wip', moveBacklinksDown, 'cosmetic');
+        addOption('fileFunctions', 'Additional file functions !wip', fileFunctions, 'functional');
+        addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread, 'functional');
+        addOption('namefags', 'Hide namefags\' posts', hideNamefags, 'functional');
+        addOption('floatingButton', 'Add a scroll to top/bottom button', floatingJumpButton, 'functional');
+        addOption('improvedHover', 'Center hovered images', improvedImageHover, 'cosmetic');
+        addOption('links', 'Strip 4chan links from tracking', removeDeferers, 'functional');
 
 
         qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button class="closeToshino" type="button"> Close </button>`);
