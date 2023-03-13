@@ -1,4 +1,4 @@
-import { style } from "./src/variables";
+import { style } from "./variables";
 
 function dev() {
     devCheck()

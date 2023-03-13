@@ -9,8 +9,8 @@ import { improvedImageHover } from "./functions/improvedImageHover";
 import { moveBacklinksDown } from "./functions/moveBacklinksDown";
 import { fileFunctions } from "./functions/fileFunctions";
 import { hideSideArrows } from "./functions/hideSideArrows";
-import { dev } from "../dev";
 import { allThreads } from "./functions/allThreads";
+import { dev } from "./dev";
 
 
 function menu() {

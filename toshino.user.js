@@ -4,7 +4,7 @@
 // @match       *://boards.4channel.org/*/*
 // @match       *://boards.4chan.org/*/*
 // @grant       none
-// @version     0.25
+// @version     0.27
 // @author      toshino developer
 // @run-at      document-end
 // @homepageURL https://github.com/toshinoo/toshino
@@ -254,33 +254,6 @@ function hideSideArrows() {
     ].join("\n");
 }
 
-function dev() {
-    devCheck();
-
-    document.addEventListener('keydown', function(event) {
-        if (event.ctrlKey && event.key === '`') {
-            localStorage.toshinoDev = 'yes';
-            console.info('You are a dev now!');
-            devCheck();
-        }
-    });
-
-    function applyDevStyles() {
-        style.innerHTML += [`
-            .dev {
-                display: block !important
-            }`
-        ].join("\n");
-    }
-
-    function devCheck() {
-        if (localStorage.toshinoDev && localStorage.toshinoDev === 'yes') {
-            applyDevStyles();
-        }
-    }
-
-}
-
 function allThreads() {
     if (threadWatcher) {
 
@@ -333,6 +306,33 @@ function allThreads() {
     } else {
         alert("Better thread watcher is enabled, but thread watcher is not enabled in 4chan's settings!");
     }
+}
+
+function dev() {
+    devCheck();
+
+    document.addEventListener('keydown', function(event) {
+        if (event.ctrlKey && event.key === '`') {
+            localStorage.toshinoDev = 'yes';
+            console.info('You are a dev now!');
+            devCheck();
+        }
+    });
+
+    function applyDevStyles() {
+        style.innerHTML += [`
+            .dev {
+                display: block !important
+            }`
+        ].join("\n");
+    }
+
+    function devCheck() {
+        if (localStorage.toshinoDev && localStorage.toshinoDev === 'yes') {
+            applyDevStyles();
+        }
+    }
+
 }
 
 function menu() {
