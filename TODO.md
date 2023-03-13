@@ -3,5 +3,4 @@
 - redirect 404s to archives
 - custom css
 - show spoilers
-- unify functions that use foreach to a single foreach
-- board padding
+- hide text replies
