@@ -248,7 +248,7 @@ function menu() {
 
         const toshinoMenu = qs('toshino-menu')
 
-        qs('.pageJump .toshino').addEventListener("click", (e) => {
+        qs('.toshino').addEventListener("click", (e) => {
             e.preventDefault()
             toshinoMenu.classList.toggle("visible")
         })

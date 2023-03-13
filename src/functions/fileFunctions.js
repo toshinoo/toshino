@@ -1,5 +1,5 @@
 import { qs } from "../utils"
-import { threads, replies } from "../variables"
+import { threads } from "../variables"
 
 function fileFunctions() {
     createButtons()

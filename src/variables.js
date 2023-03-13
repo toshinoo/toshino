@@ -3,7 +3,13 @@ import { qs } from "./utils"
 const navBar = qs('#boardNavDesktop')
 const pageList = qs('.pagelist.desktop')
 const links = qs('a[target]', 'all')
-const pageJump = qs('.pageJump')
+
+let pageJump = qs('.pageJump')
+
+if (window.getComputedStyle(document.querySelector('#navtopright')).getPropertyValue('display') !== 'none') {
+    pageJump = qs('#navtopright')
+}
+
 const threads = qs("div.thread[id]", "all")
 const replies = qs("div.post.reply[id]", "all")
 const style = document.querySelector('style')

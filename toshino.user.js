@@ -4,7 +4,7 @@
 // @match       *://boards.4channel.org/*/*
 // @match       *://boards.4chan.org/*/*
 // @grant       none
-// @version     0.20
+// @version     0.22
 // @author      toshino developer
 // @homepageURL https://github.com/toshinoo/toshino
 // @downloadURL https://github.com/toshinoo/toshino/raw/main/toshino.user.js
@@ -26,7 +26,13 @@ function qs(selector, all) {
 const navBar = qs('#boardNavDesktop');
 const pageList = qs('.pagelist.desktop');
 const links = qs('a[target]', 'all');
-const pageJump = qs('.pageJump');
+
+let pageJump = qs('.pageJump');
+
+if (window.getComputedStyle(document.querySelector('#navtopright')).getPropertyValue('display') !== 'none') {
+    pageJump = qs('#navtopright');
+}
+
 const threads = qs("div.thread[id]", "all");
 const replies = qs("div.post.reply[id]", "all");
 const style = document.querySelector('style');
@@ -481,7 +487,7 @@ function menu() {
 
         const toshinoMenu = qs('toshino-menu');
 
-        qs('.pageJump .toshino').addEventListener("click", (e) => {
+        qs('.toshino').addEventListener("click", (e) => {
             e.preventDefault();
             toshinoMenu.classList.toggle("visible");
         });
