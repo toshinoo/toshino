@@ -9,6 +9,7 @@ import { improvedImageHover } from "./functions/improvedImageHover";
 import { moveBacklinksDown } from "./functions/moveBacklinksDown";
 import { fileFunctions } from "./functions/fileFunctions";
 import { hideSideArrows } from "./functions/hideSideArrows";
+import { dev } from "../dev";
 
 
 function menu() {
@@ -20,23 +21,33 @@ function menu() {
      //   const toshinoMenu = qs('toshino-menu')
 
         let injectTo = qs('toshino-options-body')
-        let injectWhere = 'beforeend'
+        let injectWhere = 'afterbegin'
 
+            // this bullshit has to be rewritten, the variable names don't match anymore
         if (category) {
-            const header = qs(`h2[data-categoryName='${category}']`)
+            const header = qs(`[data-categoryname='${category}']`)
+            let classes = ''
+            if (category === 'dev') {
+                classes = 'dev'
+            }
+
             if (!header) {
                 qs('toshino-options-body').insertAdjacentHTML('beforeend', `
-                <h2 data-categoryName="${category}">
+                <h2 class="${category}">
                     ${category}
                 </h2>
+
+                <category data-categoryname="${category}" class="${classes}">
+                </category>
             `)
-            
+            injectTo = qs(`[data-categoryname='${category}']`)
             } else {
                 injectTo = header
-                injectWhere = "afterend" // not a ternary operator because it makes more sense like this
+                injectWhere = "afterbegin" // not a ternary operator because it makes more sense like this
             }
 
         }
+
 
         if (description.endsWith("!wip")) {
             description = description.replace("!wip", '')
@@ -84,6 +95,9 @@ function menu() {
     }
 
     function createMenu() {
+
+        dev()
+
         pageJump.insertAdjacentHTML('beforeend', `<a href="#!" class="toshino"> Toshino </a>`)
 
         document.body.insertAdjacentHTML('beforeend', `<toshino-menu></toshino-menu>`)
@@ -111,6 +125,14 @@ function menu() {
                 pointer-events: none; display: flex;
                 color: #c5c8c6
             } 
+
+            category {
+                width: 100%;
+            }
+
+            category.dev, h2.dev {
+                display: none
+            }
                 
             toshino-menu.visible {display: flex; opacity: 1; pointer-events: auto!important}
 
@@ -234,6 +256,7 @@ function menu() {
         addOption('improvedHover', 'Center hovered images', improvedImageHover, 'cosmetic')
         addOption('links', 'Strip 4chan links from tracking', removeDeferers, 'functional')
 
+        addOption('allThreads', 'Thread sum up', removeDeferers, 'dev')
 
         qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button class="closeToshino" type="button"> Close </button>`)
         qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button onclick="location.reload()" disabled class="applyToshino" type="button"> Apply </button>`)
