@@ -1,13 +1,13 @@
-import { navBar, pageList } from "../variables";
+import { boardNav, pageList } from "../variables";
 
 function movePageList() {
     if (pageList) {
-        pageList.style.top = `${navBar.clientHeight}px`;
+        pageList.style.top = `${boardNav.clientHeight}px`;
         pageList.style.position = 'fixed'
         pageList.style.right = '0'
         
         window.addEventListener("resize", (event) => {
-          pageList.style.top = `${navBar.clientHeight}px`;
+          pageList.style.top = `${boardNav.clientHeight}px`;
         });
       
         window.onscroll = function() {

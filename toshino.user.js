@@ -4,7 +4,7 @@
 // @match       *://boards.4channel.org/*/*
 // @match       *://boards.4chan.org/*/*
 // @grant       none
-// @version     0.22
+// @version     0.23
 // @author      toshino developer
 // @homepageURL https://github.com/toshinoo/toshino
 // @downloadURL https://github.com/toshinoo/toshino/raw/main/toshino.user.js
@@ -23,14 +23,16 @@ function qs(selector, all) {
     }
 }
 
-const navBar = qs('#boardNavDesktop');
+qs('#boardNavDesktop');
 const pageList = qs('.pagelist.desktop');
 const links = qs('a[target]', 'all');
 
+let boardNav = qs('#boardNavMobile');
 let pageJump = qs('.pageJump');
 
 if (window.getComputedStyle(document.querySelector('#navtopright')).getPropertyValue('display') !== 'none') {
     pageJump = qs('#navtopright');
+    boardNav = qs('#boardNavDesktop');
 }
 
 const threads = qs("div.thread[id]", "all");
@@ -50,12 +52,12 @@ function removeDeferers() {
 
 function movePageList() {
     if (pageList) {
-        pageList.style.top = `${navBar.clientHeight}px`;
+        pageList.style.top = `${boardNav.clientHeight}px`;
         pageList.style.position = 'fixed';
         pageList.style.right = '0';
         
         window.addEventListener("resize", (event) => {
-          pageList.style.top = `${navBar.clientHeight}px`;
+          pageList.style.top = `${boardNav.clientHeight}px`;
         });
       
         window.onscroll = function() {
