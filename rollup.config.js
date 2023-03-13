@@ -1,4 +1,4 @@
-const version = "0.24"
+const version = "0.25"
 
 const metadata = 
 `// ==UserScript==
@@ -9,6 +9,7 @@ const metadata =
 // @grant       none
 // @version     ${version}
 // @author      toshino developer
+// @run-at      document-end
 // @homepageURL https://github.com/toshinoo/toshino
 // @downloadURL https://github.com/toshinoo/toshino/raw/main/toshino.user.js
 // @description 4chan quality of life tweaks

@@ -10,6 +10,7 @@ import { moveBacklinksDown } from "./functions/moveBacklinksDown";
 import { fileFunctions } from "./functions/fileFunctions";
 import { hideSideArrows } from "./functions/hideSideArrows";
 import { dev } from "../dev";
+import { allThreads } from "./functions/allThreads";
 
 
 function menu() {
@@ -21,7 +22,7 @@ function menu() {
      //   const toshinoMenu = qs('toshino-menu')
 
         let injectTo = qs('toshino-options-body')
-        let injectWhere = 'afterbegin'
+        let injectWhere = 'beforeend'
 
             // this bullshit has to be rewritten, the variable names don't match anymore
         if (category) {
@@ -43,7 +44,7 @@ function menu() {
             injectTo = qs(`[data-categoryname='${category}']`)
             } else {
                 injectTo = header
-                injectWhere = "afterbegin" // not a ternary operator because it makes more sense like this
+                injectWhere = "beforeend" // not a ternary operator because it makes more sense like this
             }
 
         }
@@ -236,6 +237,17 @@ function menu() {
                 top: 50%;
             }
 
+            #threadWatcherExtension a {
+                display:block;
+                width: 100%
+            }
+
+            .extendedTWlink {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis "(...)";
+            }
+
             @media only screen and (max-width: 500px) {
                 .toshino-floating-buttons {
                     top: unset !important;
@@ -248,15 +260,19 @@ function menu() {
 
         addOption('pageList', 'Move pagination to the top of the page', movePageList, 'functional')
         addOption('hideSideArrows', 'Hide side arrows', hideSideArrows, 'cosmetic')
-        addOption('moveBacklinksDown', 'Move backlinks below replies !wip', moveBacklinksDown, 'cosmetic')
-        addOption('fileFunctions', 'Additional file functions !wip', fileFunctions, 'functional')
-        addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread, 'functional')
         addOption('namefags', 'Hide namefags\' posts', hideNamefags, 'functional')
         addOption('floatingButton', 'Add a scroll to top/bottom button', floatingJumpButton, 'functional')
         addOption('improvedHover', 'Center hovered images', improvedImageHover, 'cosmetic')
         addOption('links', 'Strip 4chan links from tracking', removeDeferers, 'functional')
 
-        addOption('allThreads', 'Thread sum up', removeDeferers, 'dev')
+        addOption('moveBacklinksDown', 'Move backlinks below replies !wip', moveBacklinksDown, 'cosmetic')
+        addOption('fileFunctions', 'Additional file functions !wip', fileFunctions, 'functional')
+
+
+        addOption('allThreads', 'Better thread watcher !wip', allThreads, 'functional')
+
+        addOption('samefagged', 'Show samefag score !wip', detectSamefaggedThread, 'dev')
+
 
         qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button class="closeToshino" type="button"> Close </button>`)
         qs('toshino-options-footer-buttons').insertAdjacentHTML('beforeend', `<button onclick="location.reload()" disabled class="applyToshino" type="button"> Apply </button>`)
