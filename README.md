@@ -1,7 +1,7 @@
 # Toshino
 4chan quality of life improvements
 
-Toshino is a userscript designed to co-exist with the native extension
+Toshino is a userscript designed to co-exist with the **native** extension
 
 ## Install
 You need a userscript manager to install toshino permanently, the recommended one is [Violentmonkey](https://violentmonkey.github.io/).
